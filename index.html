@@ -288,7 +288,7 @@ h2.section-title{
 
       <div class="cover-names">Aditya & Zulia</div>
 
-      <div class="cover-to">Kepada Yth,<br>Tamu Undangan</div>
+      <div class="cover-to">Kepada Yth,<br><span id="namaTamu">Tamu Undangan</span></div>
 
       <button class="btn-open" id="openBtn" style="margin-top:14px;background:var(--gold);color:#fff;padding:12px 28px;border-radius:28px;border:0;font-weight:700;cursor:pointer">
         Buka Undangan
@@ -580,6 +580,19 @@ function runCountdown() {
 
 setInterval(runCountdown, 1000);
 runCountdown();
+
+/*  NAMA TAMU OTOMATIS */
+function getNamaTamu() {
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("nama");
+
+  if (nama && nama.trim() !== "") {
+    document.getElementById("namaTamu").innerText = decodeURIComponent(nama);
+  }
+}
+
+getNamaTamu();
+
 </script>
 
 </body>
